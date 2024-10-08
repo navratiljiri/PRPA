@@ -50,4 +50,59 @@ c = (2 ^ 3) ^ 2
 -- mensi a b = if a < b then a else b
 
 -- logicky soušet bez použití || &&...
--- logickySoucet a b = if a then True else (if b then True else False)
+--logickySoucet a b = if a then True else (if b then True else False)
+
+-- Pattern matching 
+-- _ --> anonymní vzor
+
+{- 
+logickySoucet' True True = True
+logickySoucet' _ True = True
+logickySoucet' True _ = True
+logickySoucet' False False = False
+
+logickySoucet'' False False = False
+logickySoucet'' _ _ = True -}
+
+--Logický součin bez použití logického operátoru 
+
+{- logickySoucin a b = if not(a) then False else (if not(b) then False else True)
+
+logickySoucin' True True = True
+logickySoucin' _ _ = False -}
+
+-- Absolutní hodnota bez použití funkce 
+
+{- absolute a = if a <= 0 then a * (-1) else a
+
+absolute' a
+    | a >= 0 = a
+    | otherwise = (-a) -- něco jako default ve switch 
+
+-}
+
+-- sign funkce 
+
+{- sign' a = if(a > 0) then 1 else if(a < 0) then -1 else 0
+
+sign a 
+    | a > 0 = 1
+    | a < 0 = -1
+    | otherwise = 0 -}
+
+-- Výpočet faktoriálu
+
+{- faktorial a = if a == 0 then 1 else a * faktorial(a-1)
+
+faktorial' a 
+    | a < 0 = error "Faktoriál nesmí být záporný!!!"
+    | a == 0 = 1
+    | otherwise = a * faktorial(a-1)
+
+faktorial'' 0 = 1
+faktorial'' n = n * faktorial(n-1) -}
+
+-- Napiště funkci zbytek a d, která vypočte zbytek po celočíselném dělení nezáporného čísla a kladným číslem d, bez použití dělení a násobení.
+
+-- zbytek a b = if a < b then a else zbytek(a-b)(b)
+
