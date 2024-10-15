@@ -12,4 +12,8 @@ smaz x (y:s) = if x == y then s else (y:smaz x s) -}
 {- spoj [] s2 = s2
 spoj (h:t) s2 = (h:spoj t s2) -}
 
+-- Mapování seznamu 
 
+{- mapuj f [] = []
+
+mapuj f (h:t) = f h : mapuj f t -}

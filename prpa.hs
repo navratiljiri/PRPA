@@ -106,3 +106,30 @@ faktorial'' n = n * faktorial(n-1) -}
 
 -- zbytek a b = if a < b then a else zbytek(a-b)(b)
 
+-- Seznamy 
+
+{-vzestupne x = [x | x <- [1..100]]
+vzestupne[] = [1,2..100]
+sestupne[] = [100,99..1]
+sestupne[] = [(-10),(-9)..(-1)]
+nasobky[] = [10,20..100]
+sestupneNasobky[] = [100,90..10]-}
+
+--druhá mocnina od 1 do 10
+-- druheMocniny[] = [x^2 | x <- [1..10]]
+
+--Vytvořte seznam, který bude obsahovat všechny variace trojic
+-- seznam = [[a,b,c] | a<-[1..4], b<-[1..4], c<-[1..4]]
+-- let s = [1..4] in [[x,y,z] | x <- s, y <- s, z <- s] --řešení s let 
+
+--druhá mocnina od 1 do 10, ale pouze sudá čísla
+-- seznam[] = [x*x | x <- [1..10], x `mod` 2 == 0]
+
+-- seznam jehož prvky jsou dělitele čísla 1200600
+-- delitele n = [x | x <- [1..n], n `mod` x == 0]
+
+-- napište funkci nsd, která vrátí největšího společného dělitele dvou celých čísel 
+
+{- nsd a 0 = a 
+nsd a b = nsd b (a `mod` b) -}
+
