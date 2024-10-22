@@ -133,3 +133,41 @@ sestupneNasobky[] = [100,90..10]-}
 {- nsd a 0 = a 
 nsd a b = nsd b (a `mod` b) -}
 
+-- získej první prvek ze seznamu 
+
+{- prvni [] = error "Nastala chyba"
+prvni(h:_) = h -}
+
+-- vrat druhý prvek seznamu
+{- druhy [] = error "Nastala chyba"
+druhy [h] = error "Nastala chyba"
+druhy(_:h:_) = h -}
+
+-- vrat pouze tělo 
+--telo (_:t) = t
+
+-- poslední prvek 
+{- posledni [] = error "Nastala chyba"
+posledni [x] = x
+posledni (_:s) = posledni s -}
+
+-- vrat předposlední prvek 
+
+{- posledni [] = error "Nastala chyba"
+posledni (x:[y]) = x
+posledni (_:s) = posledni s -}
+
+-- najdi prvek ze seznamu - vrat TRUE x FALSE
+
+{- hledejPrvek _ [] = False
+hledejPrvek x (h:t) 
+                | x == h = True
+                | otherwise = hledejPrvek x t -}
+
+-- Najdi nTy prvek 
+{- nTy 1 (x:_) = x
+nTy k (_:t) = nTy(k-1) t -}
+
+-- délka seznamu 
+delka [] = 0
+delka (_:t) = 1 + delka(t)
