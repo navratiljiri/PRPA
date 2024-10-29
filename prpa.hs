@@ -169,5 +169,42 @@ hledejPrvek x (h:t)
 nTy k (_:t) = nTy(k-1) t -}
 
 -- délka seznamu 
-delka [] = 0
-delka (_:t) = 1 + delka(t)
+{- delka [] = 0
+delka (_:t) = 1 + delka(t) -}
+
+-- Smaž první výskyt prvku 
+
+{- smaz _[] = []
+
+smaz x (h:t) = if(x==h) then t else h: smaz x t -}
+
+-- Smaž všechny výskyty 
+{- smazAll _[] = []
+
+smazAll x (h:t) = if(x==h) then smazAll x t else h:smazAll x t -}
+
+-- otočení seznamu 
+{- otoc s = otoc' s []
+otoc' [] akumulator = akumulator
+otoc' (x:xs) akumulator = otoc' xs (x:akumulator) -}
+
+-- Funkce vyšších řádů 
+-- zvyš argument o 2
+
+{- zvys02 = (+2) 
+
+umocniNa6 = (^6)
+
+umocni6 a = (6^)a
+
+aplikujBinarniFunkci a b f = f a b 
+
+abf12 = aplikujBinarniFunkci 1 2 -}
+
+{- zvys [] = []
+zvys (h:t) = h+1:zvys(t) -}
+
+-- aplikuj zvyš o jednu/ vynásob
+aplikujNaPrvkySeznamu _[] = []
+aplikujNaPrvkySeznamu f (x:xs) = (f x) : aplikujNaPrvkySeznamu f xs
+
