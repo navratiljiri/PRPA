@@ -81,7 +81,88 @@ predek(Predek, Osoba) :-
 
 predek(Predek, Osoba) :- 
     rodic(Rodic, Osoba),
-    Predek(Predek, Rodic).
+    predek(Predek, Rodic).
 
 potomek(Potomek, Predek) :-
-     Predek(Predek, Potomek).
+     petrredek(Predek, Potomek).
+  
+osoba(A) :- muz(A); zena(A).
+
+% Načtení jména a výpis jeho předků 
+
+vypis_predky :- 
+write('Zadejte osobu (ukoncene teckou)'),
+read(Osoba),
+predek(Predek, Osoba),
+write('Nalezeny predek: '),
+write(Predek),
+nl,
+fail.
+vypis_predky.
+
+% Vypiš najednou všechny muže 
+
+vypis_muze :-
+muz(A),
+write(A),
+nl,
+fail.
+
+% zadáte dva čísla a vrátíme aritmetický průměr 
+
+aritmeticky_prumer :- 
+write('Zadejte prvni cislo: '),
+read(A),
+write('Zadejte druhe cislo: '),
+read(B),
+write('Aritmeticky prumer cini: '),
+Vypocet is (A+B)/2,
+write(Vypocet),
+nl.
+
+% faktorial 
+
+factorial(N, F) :- 
+    N > 0,
+    N2 is N-1,
+    factorial(N2, F2),
+    F is N * F2.
+factorial(0, 1).
+
+/* Trojúhelníkový problém - každá strana musí mít stejný součet */
+cislo(1).
+cislo(2).
+cislo(3).
+cislo(4).
+cislo(5).
+cislo(6).
+trojuhelnik(A,B,C,D,E,F) :-
+cislo(A),
+cislo(B),
+cislo(C),
+cislo(D),
+cislo(E),
+cislo(F),
+A \= B, 
+A \= C, 
+A \= D, 
+A \= E, 
+A \= F, 
+
+B \= C,
+B \= D,
+B \= E,
+B \= F, 
+
+C \= D,
+C \= E,
+C \= F,
+
+D \= E,
+D \= F,
+
+E \= F,
+
+C + D + E =:= E + F + A,
+A + B + C =:= C + D + E,
+A + B + C =:= E + F + A.
