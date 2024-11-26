@@ -130,6 +130,7 @@ factorial(N, F) :-
 factorial(0, 1).
 
 /* Trojúhelníkový problém - každá strana musí mít stejný součet */
+/* Metoda generuj a testuj */ 
 cislo(1).
 cislo(2).
 cislo(3).
