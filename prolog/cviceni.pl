@@ -167,3 +167,78 @@ E \= F,
 C + D + E =:= E + F + A,
 A + B + C =:= C + D + E,
 A + B + C =:= E + F + A.
+
+/* Vypsání všech možných variant */ 
+
+vypis_trojuhelnik :- 
+    trojuhelnik(A,B,C,D,E,F),
+    write(A:B:C:D:E:F),
+nl,
+fail.
+vypis_trojuhelnik.
+
+/* seznamy */
+
+vypis_hlavu_a_telo(Seznam) :- 
+    Seznam = [Hlava|Telo],
+    write('Hlava: '),
+    write(Hlava),
+    nl,
+    write('Telo: '),
+    write(Telo).
+
+ vypis_hlavu_a_telo2([Hlava|Telo]) :- 
+    write('Hlava: '),
+    write(Hlava),
+    nl,
+    write('Telo: '),
+    write(Telo).   
+
+/* první prvek seznamu */ 
+prvni(Prvni, [Prvni|_]).
+
+/* Druhý prvek seznamu */ 
+druhy(Druhy, [_, Druhy|_]).
+
+/* Poslední prvek */ 
+posledni(H,[H|[]]).
+
+posledni(Posledni,[_|T]):- 
+posledni(Posledni,T).
+
+/* Předposlední prvek */ 
+predposledni(H,[H|[A]]).
+
+predposledni(PredPosledni,[_|T]):- 
+predposledni(PredPosledni,T).
+
+/* Je prvek v seznamu? */
+
+najdiPrvek(Prvek, [Prvek|_]).
+najdiPrvek(Prvek, [_|T]):- najdiPrvek(Prvek, T).
+
+/* Vypiš všechny prvky */
+
+vypis([]).
+vypis([H|T]) :-
+write(H),
+nl,
+vypis(T).
+
+/* vypiš všechny prvky pozadu */ 
+vypispozadu([A]).
+vypispozadu([H|T]) :-
+vypispozadu(T),
+write(H),
+nl.
+
+/* nTý prvek */ 
+
+nTy(Seznam, N, Prvek).
+nTy([H|_], 1, H).
+nTy([_|T], N, Prvek):-
+N >1,
+N2 is N - 1,
+nTy(T, N2, Prvek).
+
+
