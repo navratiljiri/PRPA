@@ -207,7 +207,7 @@ posledni(Posledni,[_|T]):-
 posledni(Posledni,T).
 
 /* Předposlední prvek */ 
-predposledni(H,[H|[A]]).
+predposledni(H,[H|[_]]).
 
 predposledni(PredPosledni,[_|T]):- 
 predposledni(PredPosledni,T).
@@ -241,4 +241,133 @@ N >1,
 N2 is N - 1,
 nTy(T, N2, Prvek).
 
+/* Kladná čísla */ 
+kladna([]).
+kladna([H|T]) :-
+number(H),
+H > 0,
+kladna(T).
 
+/* Délka */
+delka([],0).
+delka([_|T], N) :-
+delka(T, N2),
+N is N2 + 1.
+
+
+/* Součet */ 
+soucet([], 0).
+soucet([H|T], V) :-
+soucet(T, V2),
+V is V2 + H.
+
+/* spo(S1,S2,S3) - spoj seznamy */ 
+spoj([], S2, S2).
+spoj([H|T], S2, [H|S3]) :- 
+    spoj(T, S2, S3).
+
+/* Smazat prvkek - jeho první výskyt */
+smaz(_, [], []).
+smaz(Prvek, [Prvek|T], T).
+smaz(Prvek, [H|T], [H|S]) :-
+Prvek \= H,
+smaz(Prvek, T, S).
+
+/* Smazat všechny výskyty */ 
+smazVse(_, [], []).
+smazVse(Prvek, [Prvek|T], S) :-
+smazVse(Prvek, T, S).
+smazVse(Prvek, [H|T], [H|S]) :-
+Prvek \= H,
+smaz(Prvek, T, S).
+
+/* vytkni */ 
+vytkni(Prvek, [Prvek|T], T).
+vytkni(Prvek, [H|T], [H|S]) :-
+    vytkni(Prvek, T, S).
+
+/* otočení seznamu */ 
+otoc(S1, S2) :-
+otoc(S1, [], S2).
+
+otoc([],A,A).
+otoc([H|S1], A, S2) :-
+    otoc(S1, [H|A], S2).
+
+slovo:-
+    write("Zadejte slovo: "),
+    read(Slovo),
+    name(Slovo, Seznam),
+    prvni(Prvni, Seznam),
+    posledni(Prvni, Seznam).
+
+/* Opakuj dokud nedostane sušenku */ 
+vir:-
+repeat, 
+write("CHCI SUSENKU!!"),
+nl,
+read(susenka),
+!.
+
+/* Požádá o slovo a opakuje ho dokud se nezada konec */ 
+/* repeat a něco jako if else */ 
+opakuj :-
+repeat,
+    write("Zadej slovo: "),
+    read(Slovo),
+    (
+    (Slovo = konec, !)
+    ;
+    write('Opakuji slovo: '),
+    write(Slovo),
+    nl,
+    fail
+    ).
+
+opakuj2_konec(zastav).
+opakuj2_konec(konec).
+
+opakuj2 :-
+repeat,
+    write("Zadej slovo: "),
+    read(Slovo),
+    (
+    (opakuj2_konec(Slovo), !)
+    ;
+    write('Opakuji slovo: '),
+    write(Slovo),
+    nl,
+    fail
+    ).
+
+/* vzestupně */ 
+vzestupne(0).
+vzestupne(N) :-
+    N > 0,
+    asserta(c(N)),
+    N2 is N -1,
+    vzestupne(N2).
+
+/* sestupna */ 
+sestupne(0).
+sestupne(N) :-
+    N > 0,
+    assertz(d(N)),
+    N2 is N -1,
+    sestupne(N2).
+
+/* počítadlo - uložené v paměti jako proměnná */ 
+
+pocet:-
+    retractall(pocitadlo(_)),
+    assert(pocitadlo(0)),
+    c(_),
+    retract(pocitadlo(N)),
+    N2 is N +1,
+    assert(pocitadlo(N2)),
+    fail.
+pocet:-
+    pocitadlo(N),
+    write('Pocet: '),
+    write(N),
+    nl.
