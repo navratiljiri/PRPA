@@ -167,6 +167,7 @@ delka1 (h:t) = 1 + delka1 t
 opakujNkrat1 n x = [x | y <- [1..n]] 
 
 -- Odstran určitý prvek (ve všech výskytech)
+
 odstran [] x = []
 odstran(h:t) x
     | x == h = odstran(t) x
