@@ -114,5 +114,8 @@ vypisLicheI (h:t) i
 ntyPrvek [] x = [] 
 ntyPrvek (h:t) x = if(x == 1) then h else ntyPrvek (t) (x-1)
 
+
+generujCisla = [x | x <- [1..500], x `mod` 5 == 0, x `mod` 7 == 0]
+
 nTy 1 (x:_) = x
 nTy k (_:t) = nTy(k-1) t 
