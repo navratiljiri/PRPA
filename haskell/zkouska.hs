@@ -45,7 +45,7 @@ zbytek = [x | x <- [1,3..9], rem x 4 /= 1]
 fn2 0 = 1
 fn2 1 = 2
 fn2 x 
-    | x < 0 = error "Chyba píčo"
+    | x < 0 = error "Chyba"
     | otherwise = x * fn2(x-2)
 --4*2*1
 --fn2 3 = 6
@@ -130,7 +130,7 @@ smazN x (h:t) = if(x == 1) then t else h:smazN (x-1) t
 -- tak hod error kdyz zaporne tak udelas absolutni hodnotu
 
 vypocti1 x 
-    | x == 0 = error "Jsi kokot"
+    | x == 0 = error "Chyba"
     | x `rem` 2 == 1 = x * 5
     | x `rem` 2 == 0 = x * 10
     | otherwise = x*(-1)
@@ -148,7 +148,7 @@ generuj2 = [(x,y) | x <- [1..10], y <- [2,4..10], x > 5 && y > 5]
 smazPrvni x [] = []
 smazPrvni x (h:t) = if(x == h) then t else h:smazPrvni x t
 
--- Smaž všechny negry 
+-- Smaž všechny výskyty
 smazVsechny x [] = []
 smazVsechny x (h:t) = if(x == h) then smazVsechny x t else h:smazVsechny x t
 
