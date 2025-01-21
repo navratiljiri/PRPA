@@ -92,3 +92,27 @@ lichy2 (h:t)= if(h `mod` 2 == 0) then h:lichy2 t else h*2: lichy2 t
 -- Najdi nTy prvek 
 nTy2 1 (h:_) = h
 nTy2 x (_:t) = nTy (x-1) t
+
+celkem = map (3*) [1,2,3]
+
+/*napište funkci vypocti f x y pokud f se rovná " + "spočítat součet x a y. pokud f se rovná" - " vypočítat rozdíl x a y. v opačném případě bude nula.*/
+
+
+spocti f x y
+ |f == "+" = x+y
+ |f == "-" = x-y
+ |otherwise = 0
+vypisLicheI [] _ = []
+ vypisLicheI (h:t) i = if(i mod 2 == 1) then h:vypisLicheI t (i+1) else vypisLicheI t (i+1)
+
+vypisLicheI [] _ = []
+vypisLicheI (h:t) i
+    | i `mod` 2 == 1 = h : vypisLicheI t (i + 1)  -- Přidá prvek, pokud je index lichý
+    | otherwise       = vypisLicheI t (i + 1)     -- Jinak pokračuje dál
+
+
+ntyPrvek [] x = [] 
+ntyPrvek (h:t) x = if(x == 1) then h else ntyPrvek (t) (x-1)
+
+nTy 1 (x:_) = x
+nTy k (_:t) = nTy(k-1) t 
